@@ -1,6 +1,8 @@
 <template>
 
     <form @submit="submitForm">
+
+        <!-- can also use @submit.prevent to stop the default behaviour  -->
         <div class="flex justify-between">
             <input type="text" placeholder="Type a word to search" v-model="search"
                 class="rounded-l-full h-16 w-full px-6 text-primary-txt font-semibold bg-bder-col focus:outline-none focus:ring-2 focus:ring-primary-col" />
@@ -9,7 +11,47 @@
 
         </div>
     </form>
-    <p>{{ searchedWord }}</p>
+    <!-- temporary div for word definition -->
+
+    <div v-for="entry in focusWord" :key="index">
+
+
+
+        <p class="text-5xl font-bold text-primary-txt">{{ entry.word }}</p>
+        <p>{{ entry.phonetic }}</p>
+
+        <span v-for="sound in entry.phonetics">{{ sound.audio }}</span>
+
+        <div v-for="(meaning, index) in   entry.meanings " :key="index.meaning">
+            <p class="font-bold italic">{{ meaning.partOfSpeech }}</p>
+            <hr>
+
+            <p class="text-primary-txt opacity-75">Meaning</p>
+
+            <li class="list-disc" v-for="(wordMeaning, index) in meaning.definitions" :key="wordMeaning">
+
+                <!-- <li class="list-disc" v-for="wordMeaning in meaning.definitions" :key="wordMeaning"> -->
+
+                {{ wordMeaning.definition }}
+                <p class="italic">{{ wordMeaning.example }}</p>
+            </li>
+
+
+
+
+            <p class="text-primary-txt opacity-75">Synonyms</p>
+
+            <span v-for="synonym in meaning.synonyms">{{ synonym }}, </span>
+
+            <p class="text-primary-txt opacity-75">Antonyms</p>
+            <span v-for="antonym in meaning.antonyms">{{ antonym }}, </span>
+        </div>
+        <hr>
+        <p>Source</p>
+        <a href="" v-for="link in entry.sourceUrls">{{ link }}</a>
+
+    </div>
+
 </template>
 
 <script>
@@ -20,8 +62,9 @@ export default {
     data() {
         return {
             search: '',
-            errorMsg: 'Oops!!',
-            searchedWord: '',
+            errorMsg: '',
+            focusWord: '',
+
         }
     },
     methods: {
@@ -34,11 +77,14 @@ export default {
             axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${this.search}`)
                 .then((response) => {
                     console.log(response.data)
-                    this.searchedWord = response.data
+                    this.focusWord = response.data
+
+
                 })
                 .catch((error) => {
-                    console.log(this.errorMsg)
 
+                    this.errorMsg = 'Oops! there seems to be an error'
+                    console.log(this.errorMsg)
                 })
 
             this.search = ''

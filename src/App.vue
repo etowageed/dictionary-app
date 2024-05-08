@@ -23,6 +23,7 @@ export default {
 
     <Search class="w-3/4 md:w-1/3 mx-auto"></Search>
 
+
     <Footer class="p-8" />
 
   </div>
