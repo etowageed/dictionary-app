@@ -14,7 +14,7 @@
     </form>
     <!-- word content-->
 
-    <div v-for="entry in focusWord" :key="index" class="mt-14">
+    <div v-for="entry in focusWord" :key="index" class="mt-14 text-primary-txt">
 
 
 
@@ -34,12 +34,13 @@
 
             <!-- meaning list  -->
             <div class="pl-10">
-                <li class="list-disc" v-for="(wordMeaning, index) in meaning.definitions" :key="wordMeaning">
+                <li class="list-disc marker:text-primary-col" v-for="(wordMeaning, index) in meaning.definitions"
+                    :key="wordMeaning">
 
                     <!-- <li class="list-disc" v-for="wordMeaning in meaning.definitions" :key="wordMeaning"> -->
 
                     {{ wordMeaning.definition }}
-                    <p class="italic">{{ wordMeaning.example }}</p>
+                    <p class="italic opacity-75">{{ wordMeaning.example }}</p>
                     <br>
                 </li>
                 <br>
@@ -70,6 +71,7 @@
 
 <script>
 import axios from 'axios';
+// import { mdiPlayCircle } from 'vue-material-design-icons'
 
 export default {
     name: 'Search',

@@ -24,7 +24,7 @@ export default {
     <!-- <Search class="w-3/4 md:w-1/3 mx-auto"></Search> -->
 
     <div class="border">
-      <div class="md:w-2/4 mx-auto">
+      <div class="w-full px-5 md:w-2/4 mx-auto">
         <Search />
 
       </div>
