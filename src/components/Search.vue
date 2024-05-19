@@ -14,14 +14,35 @@
     </form>
     <!-- word content-->
 
-    <div v-for="entry in focusWord" :key="index" class="mt-14 text-primary-txt">
-
-
+    <div v-for="entry in focusWord" :key="entry" class="mt-14 text-primary-txt">
 
         <p class="text-5xl font-bold text-primary-txt">{{ entry.word }}</p>
-        <p>{{ entry.phonetic }}</p>
 
-        <span v-for="sound in entry.phonetics">{{ sound.audio }}</span>
+        <div v-for="phonetic in entry.phonetics" :key="index" class="mt-10">
+            <p>{{ phonetic.text }}</p>
+            <br>
+
+            <audio controls class="block mb-10">
+                <source v-bind:src="phonetic.audio" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <!-- <p>{{ entry.phonetic }}</p>
+
+        <span v-for="sound in entry.phonetics">
+
+            <audio controls class="block mb-10">
+
+                <source :src="sound.audio" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </span> -->
+
+
+
+
+
 
         <div v-for="(meaning, index) in   entry.meanings " :key="index.meaning">
             <br>
