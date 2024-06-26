@@ -18,19 +18,18 @@ export default {
 </script>
 
 <template>
-  <div class="h-screen flex flex-col justify-between">
-    <Header class=" p-8" />
+  <div class="flex flex-col justify-between p-8">
+    <Header class=" mb-20" />
 
     <!-- <Search class="w-3/4 md:w-1/3 mx-auto"></Search> -->
 
-    <div class="border">
-      <div class="w-full px-5 md:w-2/4 mx-auto">
-        <Search />
 
-      </div>
-    </div>
 
-    <Footer class=" p-8" />
+    <Search class="w-2/4 mx-auto" />
+
+
+
+    <Footer />
 
   </div>
 
