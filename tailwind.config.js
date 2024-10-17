@@ -7,6 +7,8 @@ export default {
       "primary-bg": "#FAFAFE",
       "primary-txt": "#3D3D3D",
       "bder-col": "#E5E1E1",
+      "dark-bg": "#121212",
+      "input-bg": "#b3b3b3",
     },
     extend: {},
   },
