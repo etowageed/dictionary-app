@@ -11,7 +11,7 @@ export default {
 
 
 <template>
-    <div class="border">
+    <div>
         <label class="switch">
             <input type="checkbox" @change="toggleBtn">
             <span class="slider"></span>
