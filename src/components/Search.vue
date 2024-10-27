@@ -10,7 +10,7 @@
                 <input type="text" placeholder="Type a word to search" v-model="search"
                     class="rounded-l-full h-16 w-full px-6 font-semibold bg-input-bg text-primary-txt focus:outline-none focus:ring-2 focus:ring-primary-col"
                     @keydown.enter="searchWord" required />
-                <button class="bg-primary-col w-16 h-[65px] rounded-r-full inline-block p-2"><img
+                <button class="bg-primary-col hover:bg-[#393bf3] w-16 h-[65px] rounded-r-full inline-block p-2"><img
                         src="@/assets/searchicon.svg" alt="" class="w-9 h-9" @click="searchWord"></button>
             </div>
         </form>
@@ -97,7 +97,8 @@
 
             <br>
             <p>Source</p>
-            <a href="" v-for="   link in entry.sourceUrls   " target="_blank">{{ link }}</a>
+            <a v-bind:href="link" v-for="link in entry.sourceUrls" target="_blank" class="italic underline"> {{ link
+                }}</a>
 
         </div>
 

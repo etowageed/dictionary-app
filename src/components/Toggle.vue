@@ -16,6 +16,10 @@ export default {
             <input type="checkbox" @change="toggleBtn">
             <span class="slider"></span>
         </label>
+
+        <img src="/src/assets/moonicon.svg" alt="moon icon" class="w-7 h-7 inline ml-5">
+
+
     </div>
 </template>
 
@@ -30,8 +34,8 @@ export default {
 
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 28px;
 }
 
 /* Hide the default HTML checkbox */
@@ -51,17 +55,19 @@ export default {
     bottom: 0;
     background-color: #ccc;
     transition: 0.4s;
-    border-radius: 34px;
+    border-radius: 24px;
 }
 
 /* The circle inside the slider */
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 20px;
+    width: 20px;
     left: 4px;
     bottom: 4px;
+    top: 4px;
+    /* right: 4px; */
     background-color: white;
     transition: 0.4s;
     border-radius: 50%;
@@ -73,6 +79,6 @@ input:checked+.slider {
 }
 
 input:checked+.slider:before {
-    transform: translateX(26px);
+    transform: translateX(24px);
 }
 </style>

@@ -5,6 +5,7 @@ import Footer from './components/Footer.vue'
 import Toggle from './components/Toggle.vue'
 import Fonts from './components/Fonts.vue'
 
+
 export default {
   name: 'App',
   components: {
@@ -14,21 +15,24 @@ export default {
   data() {
     return {
       isDarkBg: false, // default theme is white so darkbg is false
-      selectedFont: 'Source Code Pro',
+      fontSelecta: '',
     };
   },
 
   provide() {
     return {
       toggleBtn: this.toggleDarkBg,
-      selectedFont: () => this.selectedFont
     }
   },
 
   methods: {
     toggleDarkBg() {
       this.isDarkBg = !this.isDarkBg;
+    },
 
+    handleEmittedFontProp(payload) {
+      console.log("this is", payload)
+      this.fontSelecta = payload;
     }
   }
 }
@@ -36,17 +40,11 @@ export default {
 
 
 <template>
-  <div v-bind:style="{ fontFamily: selectedFont }"
+  <div v-bind:style="{ fontFamily: fontSelecta }"
     class="flex flex-col justify-between p-8 text-primary-txt min-h-screen"
     v-bind:class="{ dark: isDarkBg, light: !isDarkBg }">
 
-    <Header class=" mb-20" />
-
-    <select name="fontSelector" id="fonts" v-model="selectedFont">
-      <option value="Merriweather">Serif</option>
-      <option value="Roboto">Sans-serif</option>
-      <option value="Source Code Pro">Monospace</option>
-    </select>
+    <Header class=" mb-20" @font-event="handleEmittedFontProp" />
 
     <Search class="w-2/4 mx-auto" />
 
@@ -60,17 +58,7 @@ export default {
 </template>
 
 
-
-
 <style>
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-
-.sourcky {
-  font-family: 'Source Code Pro', monospace;
-}
-
 .light {
   background-color: white;
   color: #3d3d3d;
